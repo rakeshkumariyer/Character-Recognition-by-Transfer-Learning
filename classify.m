@@ -1,4 +1,5 @@
-chards = imageDatastore('C:\Users\Pruthvi Raj\Desktop\zerone_cl\new_dataset','IncludeSubfolders',true,'LabelSource','foldernames');
+%add the path to the dataset folder as the first parameter to imageDatastore()
+chards = imageDatastore('dataset','IncludeSubfolders',true,'LabelSource','foldernames');
 %images = readall(chards);
 
 chards.ReadSize = numpartitions(chards);
@@ -14,7 +15,7 @@ charnames = chards.Labels;
 anet = alexnet;
 layers = anet.Layers;
 
-fc = fullyConnectedLayer(47); %62 is the number of output classes
+fc = fullyConnectedLayer(47); %47 is the number of output classes
 layers(end-2) = fc;
 layers(end) = classificationLayer;
 %opts = trainingOptions('sgdm');
